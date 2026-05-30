@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zepto Clone</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f5f7;
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    background:white;
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+
+.logo{
+    color:#6f2cff;
+    font-size:2rem;
+    font-weight:700;
+}
+
+.search{
+    width:40%;
+}
+
+.search input{
+    width:100%;
+    padding:12px 18px;
+    border:none;
+    background:#f3f3f3;
+    border-radius:10px;
+    outline:none;
+}
+
+.nav-btn{
+    padding:10px 20px;
+    background:#6f2cff;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+}
+
+/* HERO */
+
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    min-height:500px;
+    padding:50px 8%;
+    background:linear-gradient(135deg,#6f2cff,#4a00e0);
+    color:white;
+}
+
+.hero-content{
+    max-width:500px;
+}
+
+.hero-content h1{
+    font-size:3.5rem;
+    line-height:1.2;
+}
+
+.hero-content p{
+    margin:20px 0;
+    font-size:1rem;
+}
+
+.shop-btn{
+    display:inline-block;
+    background:white;
+    color:#6f2cff;
+    padding:12px 25px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.hero-image{
+    font-size:12rem;
+}
+
+/* SECTION */
+
+.section{
+    padding:60px 8%;
+}
+
+.section-title{
+    font-size:2rem;
+    margin-bottom:30px;
+}
+
+/* CATEGORIES */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;
+}
+
+.category{
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.category:hover{
+    transform:translateY(-8px);
+}
+
+.category .icon{
+    font-size:3rem;
+}
+
+.category p{
+    margin-top:10px;
+    font-weight:600;
+}
+
+/* OFFERS */
+
+.offers{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.offer{
+    color:white;
+    padding:35px;
+    border-radius:20px;
+}
+
+.offer:nth-child(1){
+    background:linear-gradient(135deg,#ff4d4d,#ff0066);
+}
+
+.offer:nth-child(2){
+    background:linear-gradient(135deg,#ffb703,#fb8500);
+}
+
+.offer:nth-child(3){
+    background:linear-gradient(135deg,#06d6a0,#118ab2);
+}
+
+.offer h2{
+    margin-bottom:10px;
+}
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.product-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+}
+
+.product-image{
+    height:180px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f8f8f8;
+    font-size:5rem;
+}
+
+.product-details{
+    padding:18px;
+}
+
+.delivery{
+    background:#f0f0f0;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:.75rem;
+}
+
+.product-details h3{
+    margin:12px 0 5px;
+}
+
+.price-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:15px;
+}
+
+.price{
+    font-size:1.2rem;
+    font-weight:700;
+}
+
+.add-btn{
+    padding:8px 18px;
+    border:none;
+    background:#6f2cff;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* APP BANNER */
+
+.app-banner{
+    margin:60px 8%;
+    padding:50px;
+    border-radius:20px;
+    color:white;
+    background:linear-gradient(135deg,#6f2cff,#a855f7);
+    text-align:center;
+}
+
+.app-banner h2{
+    font-size:2rem;
+}
+
+.app-banner p{
+    margin:15px 0;
+}
+
+.download-btn{
+    display:inline-block;
+    background:white;
+    color:#6f2cff;
+    padding:12px 25px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    color:white;
+    padding:50px 8%;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
+}
+
+footer h3{
+    margin-bottom:15px;
+}
+
+footer ul{
+    list-style:none;
+}
+
+footer ul li{
+    margin-bottom:10px;
+}
+
+footer ul li a{
+    color:#d1d5db;
+    text-decoration:none;
+}
+
+.copy{
+    text-align:center;
+    margin-top:30px;
+    color:#9ca3af;
+}
+
+@media(max-width:768px){
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+.hero-content h1{
+    font-size:2.5rem;
+}
+
+.hero-image{
+    font-size:8rem;
+    margin-top:30px;
+}
+
+.search{
+    display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">⚡ zepto</div>
+
+    <div class="search">
+        <input type="text" placeholder="Search for groceries...">
+    </div>
+
+    <a href="#" class="nav-btn">Login</a>
+</nav>
+
+<section class="hero">
+
+    <div class="hero-content">
+        <h1>Groceries Delivered in 10 Minutes</h1>
+        <p>
+            Fresh fruits, vegetables, snacks, beverages,
+            dairy products and more delivered to your doorstep.
+        </p>
+
+        <a href="#" class="shop-btn">Shop Now</a>
+    </div>
+
+    <div class="hero-image">
+        🛒
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">Shop By Category</h2>
+
+    <div class="categories">
+
+        <div class="category">
+            <div class="icon">🥦</div>
+            <p>Vegetables</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">🍎</div>
+            <p>Fruits</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">🥛</div>
+            <p>Dairy</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">🍪</div>
+            <p>Snacks</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">🥤</div>
+            <p>Beverages</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">🧴</div>
+            <p>Beauty</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Today's Offers</h2>
+
+<div class="offers">
+
+<div class="offer">
+<h2>40% OFF</h2>
+<p>Fresh Fruits & Vegetables</p>
+</div>
+
+<div class="offer">
+<h2>Buy 2 Get 1</h2>
+<p>On Soft Drinks</p>
+</div>
+
+<div class="offer">
+<h2>60% OFF</h2>
+<p>First Order Special</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Popular Products</h2>
+
+<div class="products">
+
+<div class="product-card">
+<div class="product-image">🥛</div>
+<div class="product-details">
+<span class="delivery">⚡ 10 min</span>
+<h3>Amul Milk</h3>
+<p>500 ml</p>
+<div class="price-row">
+<span class="price">₹28</span>
+<button class="add-btn">ADD</button>
+</div>
+</div>
+</div>
+
+<div class="product-card">
+<div class="product-image">🍞</div>
+<div class="product-details">
+<span class="delivery">⚡ 10 min</span>
+<h3>Brown Bread</h3>
+<p>400 g</p>
+<div class="price-row">
+<span class="price">₹40</span>
+<button class="add-btn">ADD</button>
+</div>
+</div>
+</div>
+
+<div class="product-card">
+<div class="product-image">🥚</div>
+<div class="product-details">
+<span class="delivery">⚡ 10 min</span>
+<h3>Fresh Eggs</h3>
+<p>6 Pieces</p>
+<div class="price-row">
+<span class="price">₹55</span>
+<button class="add-btn">ADD</button>
+</div>
+</div>
+</div>
+
+<div class="product-card">
+<div class="product-image">🍅</div>
+<div class="product-details">
+<span class="delivery">⚡ 10 min</span>
+<h3>Tomatoes</h3>
+<p>500 g</p>
+<div class="price-row">
+<span class="price">₹22</span>
+<button class="add-btn">ADD</button>
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<div class="app-banner">
+<h2>Download The Zepto App</h2>
+<p>Get exclusive offers and faster delivery.</p>
+<a href="#" class="download-btn">Download Now</a>
+</div>
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<h3>Zepto</h3>
+<p>Groceries delivered in 10 minutes.</p>
+</div>
+
+<div>
+<h3>Company</h3>
+<ul>
+<li><a href="#">About</a></li>
+<li><a href="#">Careers</a></li>
+<li><a href="#">Blog</a></li>
+</ul>
+</div>
+
+<div>
+<h3>Support</h3>
+<ul>
+<li><a href="#">Help</a></li>
+<li><a href="#">Contact</a></li>
+<li><a href="#">Privacy</a></li>
+</ul>
+</div>
+
+<div>
+<h3>Follow Us</h3>
+<ul>
+<li><a href="#">Instagram</a></li>
+<li><a href="#">Facebook</a></li>
+<li><a href="#">Twitter</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class="copy">
+© 2025 Zepto Clone. All Rights Reserved.
+</div>
+
+</footer>
+
+</body>
+</html>
